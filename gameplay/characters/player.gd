@@ -1,11 +1,21 @@
 tool
 extends Character
 
-const SQRT_2:=sqrt(2)
+var invincible:=false
 
 
 func _ready():
-	pass
+	if Engine.editor_hint:
+		return
+	
+	GlobalScript.player=self
+	$Tween.interpolate_property(
+		$Sprite,
+		"self_modulate:a",
+		1.0,
+		0.5,
+		0.2
+	)
 
 
 func move(delta:float):
@@ -25,29 +35,42 @@ func move(delta:float):
 	var move_vector:=Vector2.ZERO
 	if l:
 		if u:
-			move_vector=Vector2(-SQRT_2,-SQRT_2)/2
 			direction=Directions.UL
 		elif d:
-			move_vector=Vector2(-SQRT_2,SQRT_2)/2
 			direction=Directions.DL
 		else:
-			move_vector=Vector2.LEFT
 			direction=Directions.L
 	elif r:
 		if u:
-			move_vector=Vector2(SQRT_2,-SQRT_2)/2
 			direction=Directions.UR
 		elif d:
-			move_vector=Vector2(SQRT_2,SQRT_2)/2
 			direction=Directions.DR
 		else:
-			move_vector=Vector2.RIGHT
 			direction=Directions.R
 	elif u:
-		move_vector=Vector2.UP
 		direction=Directions.U
 	elif d:
-		move_vector=Vector2.DOWN
 		direction=Directions.D
+	else:
+		return
 	
+	move_vector=DIRECTIONS_MAPPING[direction]
 	position+=speed*move_vector*delta
+
+
+func _on_Character_killed():
+	visible=false
+
+
+func _on_InvincibleTimer_timeout():
+	invincible=false
+	$Tween.stop(sprite)
+	sprite.self_modulate.a=1
+
+
+func damage(by:Character,amount:int):
+	if !invincible:
+		.damage(by,amount)
+		invincible=true
+		$Tween.start()
+		$InvincibleTimer.start()

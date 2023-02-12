@@ -8,15 +8,22 @@
 
 [node name="Player" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-speed = 128.0
+speed = 64.0
+max_hp = 100
+attack = 0
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 1 )
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
-offset = Vector2( 0, -2 )
-frame = 2
+frame = 0
 
-[node name="AnimationTimer" parent="." index="2"]
-wait_time = 0.25
+[node name="Tween" type="Tween" parent="." index="3"]
+repeat = true
+playback/repeat = true
+
+[node name="InvincibleTimer" type="Timer" parent="." index="4"]
+one_shot = true
+
+[connection signal="timeout" from="InvincibleTimer" to="." method="_on_InvincibleTimer_timeout"]

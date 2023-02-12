@@ -18,4 +18,8 @@ current = true
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
 [connection signal="chunk_changed" from="Player" to="." method="_on_Player_chunk_changed"]
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
