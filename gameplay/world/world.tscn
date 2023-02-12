@@ -1,8 +1,21 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
+[ext_resource path="res://gameplay/characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/world/world.gd" type="Script" id=2]
+[ext_resource path="res://gameplay/tiles/tileset.tres" type="TileSet" id=3]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
 
+[node name="Layer1" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 3 )
+cell_size = Vector2( 16, 16 )
+format = 1
+
 [node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+
+[connection signal="chunk_changed" from="Player" to="." method="_on_Player_chunk_changed"]

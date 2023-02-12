@@ -5,7 +5,9 @@ extends Area2D
 signal chunk_changed(new_chunk)
 
 export var speed:float=16
-export var animation_fps:float=0.5
+export var animation_fps:float=4
+export var max_hp:int=10
+export var attack:int=10
 
 onready var sprite:Sprite=$Sprite
 
@@ -19,7 +21,7 @@ enum Directions{
 	U,
 	UR,
 }
-var direction:int setget set_direction
+var direction:int
 var _animation_index:int=1
 var _precious_position:Vector2
 var _previous_chunk:Vector2=Vector2.INF
@@ -62,16 +64,11 @@ func _physics_process(delta):
 		if _previous_chunk!=chunk:
 			_previous_chunk=chunk
 			emit_signal("chunk_changed",chunk)
-			print_debug(chunk)
 
 
 func _draw():
 	if Engine.editor_hint:
 		draw_rect(Rect2(-16,-16,32,32),Color.white,false)
-
-
-func set_direction(dir:int):
-	pass
 
 
 func _on_AnimationTimer_timeout():
