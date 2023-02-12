@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://gameplay/characters/character.gd" type="Script" id=1]
+
+[node name="Character" type="Area2D"]
+script = ExtResource( 1 )
+animation_fps = 4.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 2 )
+hframes = 6
+vframes = 4
+frame = 1
+
+[node name="AnimationTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="timeout" from="AnimationTimer" to="." method="_on_AnimationTimer_timeout"]

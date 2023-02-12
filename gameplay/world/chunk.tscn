@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://gameplay/tiles/tileset.tres" type="TileSet" id=1]
+[ext_resource path="res://gameplay/world/chunk.gd" type="Script" id=2]
+[ext_resource path="res://gameplay/characters/player.tscn" type="PackedScene" id=3]
+
+[node name="Chunk" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Layer1" type="TileMap" parent="."]
+scale = Vector2( 2, 2 )
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 0, 1, 0 )
+
+[node name="Character" parent="Layer1" instance=ExtResource( 3 )]
