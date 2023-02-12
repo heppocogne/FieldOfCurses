@@ -50,17 +50,6 @@ func _ready():
 	_precious_position=position
 
 
-func _process(_delta):
-	if Engine.editor_hint:
-		update()
-		sprite=$Sprite
-	
-	if _animation_index<3:
-		sprite.frame=direction*3+_animation_index
-	else:
-		sprite.frame=direction*3+1
-
-
 func move(_delta:float):
 	pass
 

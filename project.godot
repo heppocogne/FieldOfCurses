@@ -18,10 +18,16 @@ _global_script_classes=[ {
 "class": "Monster",
 "language": "GDScript",
 "path": "res://gameplay/characters/monster.gd"
+}, {
+"base": "Node2D",
+"class": "Weapon",
+"language": "GDScript",
+"path": "res://gameplay/weapon/weapon.gd"
 } ]
 _global_script_class_icons={
 "Character": "",
-"Monster": ""
+"Monster": "",
+"Weapon": ""
 }
 
 [application]
@@ -74,8 +80,8 @@ game_right={
 
 [layer_names]
 
-2d_physics/layer_1="Character"
-2d_physics/layer_2="PlaerAttack"
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Enemy"
 
 [physics]
 

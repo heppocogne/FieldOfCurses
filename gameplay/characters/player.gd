@@ -2,6 +2,7 @@ tool
 extends Character
 
 var invincible:=false
+var weapon:Weapon
 
 
 func _ready():
@@ -16,6 +17,33 @@ func _ready():
 		0.5,
 		0.2
 	)
+
+
+func _process(_delta):
+	if Engine.editor_hint:
+		update()
+		sprite=$Sprite
+	else:
+		var dir_vector:=get_local_mouse_position().normalized()
+		var dot_max:=-INF
+		for dir in DIRECTIONS_MAPPING:
+			var dot:float=DIRECTIONS_MAPPING[dir].dot(dir_vector)
+			if dot_max<dot:
+				dot_max=dot
+				direction=dir
+	
+	if _animation_index<3:
+		sprite.frame=direction*3+_animation_index
+	else:
+		sprite.frame=direction*3+1
+
+
+func _input(event:InputEvent):
+	if event is InputEventMouseButton:
+		var mb:=event as InputEventMouseButton
+		if mb.button_index==BUTTON_LEFT and mb.pressed:
+			if weapon:
+				weapon.attack()
 
 
 func move(delta:float):
