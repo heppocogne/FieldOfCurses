@@ -27,11 +27,12 @@ func move(delta:float):
 
 
 func _physics_process(_delta):
+	if Engine.editor_hint:
+		return
+	
 	if player_entered:
 		GlobalScript.player.damage(self,attack)
 	
-	if 256*6400<GlobalScript.player.position.distance_squared_to(position):
-		print_debug("queue_free")
 		queue_free()
 
 

@@ -81,6 +81,10 @@ func _on_SpawnTimer_timeout():
 		var cell:Vector2=spawnable_cells[randi()%spawnable_cells.size()]
 		var pos:=layer1.map_to_world(cell)
 		print_debug(cell)
-		var slime:Monster=preload("res://gameplay/characters/slime.tscn").instance()
+		var slime:Monster
+		if 4<=_get_curse(cell):
+			slime=preload("res://gameplay/characters/red_slime.tscn").instance()
+		else:
+			slime=preload("res://gameplay/characters/slime.tscn").instance()
 		slime.position=layer1.to_global(pos)
 		add_child(slime)
