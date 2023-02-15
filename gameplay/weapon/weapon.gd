@@ -36,10 +36,10 @@ func _attack_impl():
 			angle_diff+=TAU
 		if abs(angle_diff)<=_attack_angle:
 			enemy.damage(GlobalScript.player,damage)
-
-#			count+=1
-#			if count==maximum_targets:
-#				break
+			var effect:SlashEffect=preload("res://gameplay/effect/slash_effect.tscn").instance()
+			effect.rotation=enemy.position.angle_to_point(GlobalScript.player.position)+deg2rad(-135)
+			effect.position=enemy.position
+			GlobalScript.world.add_child(effect)
 
 
 func _attack_effect():

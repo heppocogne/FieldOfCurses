@@ -6,10 +6,8 @@
 [node name="Monster" instance=ExtResource( 1 )]
 collision_layer = 2
 script = ExtResource( 2 )
-mass = 1.0
 curse = 1.0
 
-[node name="Sprite" parent="." index="1"]
-frame = 2
+[node name="Tween" type="Tween" parent="." index="3"]
 
 [connection signal="area_exited" from="." to="." method="_on_Monster_area_exited"]

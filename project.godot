@@ -24,6 +24,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://gameplay/characters/player.gd"
 }, {
+"base": "Sprite",
+"class": "SlashEffect",
+"language": "GDScript",
+"path": "res://gameplay/effect/slash_effect.gd"
+}, {
 "base": "Node2D",
 "class": "Weapon",
 "language": "GDScript",
@@ -33,6 +38,7 @@ _global_script_class_icons={
 "Character": "",
 "Monster": "",
 "Player": "",
+"SlashEffect": "",
 "Weapon": ""
 }
 

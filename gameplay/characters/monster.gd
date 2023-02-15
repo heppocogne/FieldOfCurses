@@ -4,10 +4,10 @@ extends Character
 
 const SPREAD_THRESHHOLD=0.01
 
-export var mass:float=1
 export var curse:float=1
 
 var player_entered:=false
+var diag:=1.0
 
 func _ready():
 	pass
@@ -25,6 +25,9 @@ func _process(_delta):
 
 
 func move(delta:float):
+	if GlobalScript.player.dead:
+		return
+	
 	var move_vector:=(GlobalScript.player.position-position).normalized()
 	
 	var dot_max:=-INF
@@ -34,7 +37,7 @@ func move(delta:float):
 			dot_max=dot
 			direction=dir
 	
-	position+=move_vector*speed*delta
+	position+=move_vector*speed*diag*delta
 
 
 func _physics_process(_delta):
@@ -50,6 +53,15 @@ func _physics_process(_delta):
 
 func damage(by:Character,amount:int):
 	.damage(by,amount)
+	var t:Tween=$Tween
+	t.interpolate_property(
+		self,
+		"diag",
+		-0.5,
+		1.0,
+		1.0
+	)
+	t.start()
 
 
 func _on_Character_killed():
