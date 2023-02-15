@@ -82,7 +82,7 @@ func _on_AnimationTimer_timeout():
 
 func damage(_by:Character,amount:int):
 	hp-=amount
-	if hp<0:
+	if hp<=0:
 		emit_signal("killed")
 
 

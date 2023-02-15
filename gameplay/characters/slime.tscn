@@ -6,8 +6,9 @@
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="Slime" instance=ExtResource( 1 )]
-speed = 24.0
+speed = 64.0
 attack = 1
+curse = 0.5
 
 [node name="CollisionShape2D" parent="." index="0"]
 shape = SubResource( 1 )

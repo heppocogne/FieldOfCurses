@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://gameplay/characters/character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/characters/[Chara]Fighter3_USM.png" type="Texture" id=2]
 [ext_resource path="res://gameplay/characters/player.gd" type="Script" id=3]
+[ext_resource path="res://gameplay/weapon/long_sword.tscn" type="PackedScene" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -10,7 +11,6 @@
 collision_mask = 2
 script = ExtResource( 3 )
 speed = 64.0
-max_hp = 20
 attack = 0
 
 [node name="CollisionShape2D" parent="." index="0"]
@@ -26,5 +26,8 @@ playback/repeat = true
 
 [node name="InvincibleTimer" type="Timer" parent="." index="4"]
 one_shot = true
+
+[node name="LongSword" parent="." index="5" instance=ExtResource( 4 )]
+attack_angle_degrees = 120.0
 
 [connection signal="timeout" from="InvincibleTimer" to="." method="_on_InvincibleTimer_timeout"]

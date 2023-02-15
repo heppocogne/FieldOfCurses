@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="RedSlime" instance=ExtResource( 1 )]
-speed = 48.0
+speed = 96.0
 max_hp = 20
 attack = 2
 

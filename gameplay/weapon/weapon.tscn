@@ -13,3 +13,13 @@ collision_mask = 2
 
 [node name="CoolDownTimer" type="Timer" parent="."]
 one_shot = true
+
+[node name="SpritePaqrent" type="Node2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="SpritePaqrent"]
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

@@ -44,6 +44,7 @@ func _physics_process(_delta):
 	if player_entered:
 		GlobalScript.player.damage(self,attack)
 	
+	if 32*32<position.distance_to(GlobalScript.player.position):
 		queue_free()
 
 
@@ -52,6 +53,17 @@ func damage(by:Character,amount:int):
 
 
 func _on_Character_killed():
+	var d:=-int(log(SPREAD_THRESHHOLD/curse)/log(2))
+	var curse_spread:={}
+	var center:Vector2=get_parent().layer1.world_to_map(get_parent().layer1.to_local(position))
+	for y in range(-d,d+1):
+		for x in range(-d,d+1):
+#			print("2^",-Vector2(x,y).length(),"=",pow(2,-Vector2(x,y).length()))
+			var curse_value:=curse*pow(2,-Vector2(x,y).length())
+			if SPREAD_THRESHHOLD<curse_value:
+				curse_spread[center+Vector2(x,y)]=curse_value
+#	print_debug(get_parent().layer1.world_to_map(position))
+	get_parent().add_curses(curse_spread)
 	queue_free()
 
 

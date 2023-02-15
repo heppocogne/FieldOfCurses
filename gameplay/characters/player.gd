@@ -1,8 +1,10 @@
 tool
+class_name Player
 extends Character
 
 var invincible:=false
-var weapon:Weapon
+var dead:=false
+onready var weapon:Weapon=$LongSword
 
 
 func _ready():
@@ -39,14 +41,23 @@ func _process(_delta):
 
 
 func _input(event:InputEvent):
+	if dead:
+		return
+	
 	if event is InputEventMouseButton:
 		var mb:=event as InputEventMouseButton
 		if mb.button_index==BUTTON_LEFT and mb.pressed:
 			if weapon:
 				weapon.attack()
+	if event is InputEventMouseMotion:
+		if weapon:
+			weapon.rotation=get_local_mouse_position().angle()
 
 
 func move(delta:float):
+	if dead:
+		return
+	
 	var l:=Input.is_action_pressed("game_left")
 	var r:=Input.is_action_pressed("game_right")
 	var u:=Input.is_action_pressed("game_up")
@@ -83,11 +94,23 @@ func move(delta:float):
 		return
 	
 	move_vector=DIRECTIONS_MAPPING[direction]
+	var l1:TileMap=get_parent().layer1
+	var cell:int=l1.get_cellv(l1.world_to_map(l1.to_local(position)))
+	if cell==3:
+		move_vector*=0.9
+	elif cell==4:
+		move_vector*=0.8
+	elif cell==5:
+		move_vector*=0.75
+		damage(null,1)
 	position+=speed*move_vector*delta
+	position.x=clamp(position.x,-32*32,32*32)
+	position.y=clamp(position.y,-32*32,32*32)
 
 
 func _on_Character_killed():
 	visible=false
+	dead=true
 
 
 func _on_InvincibleTimer_timeout():
@@ -102,3 +125,4 @@ func damage(by:Character,amount:int):
 		invincible=true
 		$Tween.start()
 		$InvincibleTimer.start()
+		print_debug("hp:",hp)

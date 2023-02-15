@@ -15,11 +15,15 @@ format = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+limit_left = -1024
+limit_top = -1024
+limit_right = 1024
+limit_bottom = 1024
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+speed = 128.0
 
 [node name="SpawnTimer" type="Timer" parent="."]
 autostart = true
 
-[connection signal="chunk_changed" from="Player" to="." method="_on_Player_chunk_changed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
