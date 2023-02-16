@@ -4,15 +4,15 @@
 [ext_resource path="res://gameplay/effect/effect.gd" type="Script" id=2]
 
 [sub_resource type="CanvasItemMaterial" id=1]
-blend_mode = 2
+blend_mode = 1
 
 [node name="HitEffect" type="Sprite"]
 material = SubResource( 1 )
 texture = ExtResource( 1 )
 hframes = 8
-vframes = 4
+vframes = 3
 script = ExtResource( 2 )
-max_frame = 31
+max_frame = 23
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05

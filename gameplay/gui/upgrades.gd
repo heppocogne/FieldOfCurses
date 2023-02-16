@@ -42,11 +42,11 @@ func _on_Upgrade_selected(id:String):
 	elif id=="attack_damage":
 		GlobalScript.player.weapon.damage+=2
 	elif id=="attack_speed":
-		GlobalScript.player.weapon.get_node("CoolDownTimer").wait_timer*=0.9
+		GlobalScript.player.weapon.get_node("CoolDownTimer").wait_time*=0.9
 	elif id=="attack_targets":
 		GlobalScript.player.weapon.maximum_targets+=1
 	elif id=="attack_knockback":
-		GlobalScript.player.weapon.knockback+=0.15
+		GlobalScript.player.weapon.knockback+=0.25
 	elif id=="purify":
 		var d:=-int(log(THRESHHOLD/2)/log(2))
 		var curse_remove:={}

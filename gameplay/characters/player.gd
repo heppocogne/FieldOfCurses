@@ -121,7 +121,7 @@ func _on_Character_killed():
 	visible=false
 	var effect:Effect=preload("res://gameplay/effect/hit_effect.tscn").instance()
 	effect.position=position
-	add_child(effect)
+	get_parent().add_child(effect)
 	dead=true
 
 

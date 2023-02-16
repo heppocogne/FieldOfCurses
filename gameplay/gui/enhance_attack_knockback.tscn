@@ -11,5 +11,5 @@ texture = ExtResource( 2 )
 
 [node name="Label" parent="VBoxContainer" index="1"]
 margin_bottom = 96.0
-text = "Attack Targets:
+text = "Knockback:
 Increases the knockback distance"

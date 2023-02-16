@@ -108,4 +108,4 @@ func _on_Monster_killed():
 
 
 func _on_Player_max_point_changed(_max_pt:int):
-	$SpawnTimer.wait_time=max($SpawnTimer.wait_time-0.5,1)
+	$SpawnTimer.wait_time=max($SpawnTimer.wait_time-0.25,1.5)
