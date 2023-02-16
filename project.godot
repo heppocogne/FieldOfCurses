@@ -56,8 +56,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="CursedLands"
-config/icon="res://icon.png"
+config/name="Field Of Curses"
+config/icon="res://gameplay/item/icon051.png"
 
 [autoload]
 
