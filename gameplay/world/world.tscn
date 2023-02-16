@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://gameplay/characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/world/world.gd" type="Script" id=2]
@@ -12,6 +12,12 @@
 [ext_resource path="res://gui/PixelMplus10-Regular.12.tres" type="DynamicFont" id=10]
 [ext_resource path="res://gui/PixelMplus10-Regular.32.tres" type="DynamicFont" id=11]
 [ext_resource path="res://gui/game_over.gd" type="Script" id=12]
+[ext_resource path="res://gui/curse.gd" type="Script" id=13]
+
+[sub_resource type="DynamicFont" id=2]
+outline_size = 1
+outline_color = Color( 1, 1, 1, 0.501961 )
+font_data = ExtResource( 9 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -71,22 +77,23 @@ margin_left = 72.0
 margin_right = 104.0
 margin_bottom = 32.0
 
-[node name="Points" type="HBoxContainer" parent="GUI"]
+[node name="PointsAndCurse" type="HBoxContainer" parent="GUI"]
 margin_left = 16.0
 margin_top = 560.0
-margin_right = 397.0
+margin_right = 784.0
 margin_bottom = 574.0
 mouse_filter = 2
 script = ExtResource( 7 )
 
-[node name="Label" type="Label" parent="GUI/Points"]
+[node name="Label" type="Label" parent="GUI/PointsAndCurse"]
+margin_top = 2.0
 margin_right = 42.0
-margin_bottom = 14.0
+margin_bottom = 16.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "Points:"
 
-[node name="ProgressBar" type="ProgressBar" parent="GUI/Points"]
+[node name="ProgressBar" type="ProgressBar" parent="GUI/PointsAndCurse"]
 margin_left = 46.0
 margin_right = 346.0
 margin_bottom = 14.0
@@ -96,13 +103,23 @@ max_value = 5.0
 step = 1.0
 percent_visible = false
 
-[node name="Values" type="Label" parent="GUI/Points"]
+[node name="Values" type="Label" parent="GUI/PointsAndCurse"]
 margin_left = 350.0
+margin_top = 2.0
 margin_right = 368.0
-margin_bottom = 14.0
+margin_bottom = 16.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = ExtResource( 10 )
 text = "0/5"
+
+[node name="Curse" type="Label" parent="GUI/PointsAndCurse"]
+margin_left = 372.0
+margin_right = 768.0
+margin_bottom = 19.0
+size_flags_horizontal = 3
+custom_fonts/font = SubResource( 2 )
+align = 2
+script = ExtResource( 13 )
 
 [node name="CenterContainer" type="CenterContainer" parent="GUI"]
 anchor_right = 1.0
@@ -196,9 +213,10 @@ text = "Quit"
 [connection signal="hp_changed" from="Player" to="GUI/Health" method="_on_Player_hp_changed"]
 [connection signal="killed" from="Player" to="GUI/GameOver" method="_on_Player_killed"]
 [connection signal="max_point_changed" from="Player" to="." method="_on_Player_max_point_changed"]
-[connection signal="max_point_changed" from="Player" to="GUI/Points" method="_on_Player_max_point_changed"]
+[connection signal="max_point_changed" from="Player" to="GUI/PointsAndCurse" method="_on_Player_max_point_changed"]
 [connection signal="max_point_changed" from="Player" to="GUI/CenterContainer/Upgrades" method="_on_Player_max_point_changed"]
-[connection signal="point_changed" from="Player" to="GUI/Points" method="_on_Player_point_changed"]
+[connection signal="player_cell" from="Player" to="GUI/PointsAndCurse/Curse" method="_on_Player_player_cell"]
+[connection signal="point_changed" from="Player" to="GUI/PointsAndCurse" method="_on_Player_point_changed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
 [connection signal="pressed" from="GUI/GameOver/HBoxContainer/Retry" to="GUI/GameOver" method="_on_Retry_pressed"]
 [connection signal="pressed" from="GUI/GameOver/HBoxContainer/Quit" to="GUI/GameOver" method="_on_Quit_pressed"]

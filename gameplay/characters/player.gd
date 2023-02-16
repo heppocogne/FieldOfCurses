@@ -5,6 +5,7 @@ extends Character
 signal hp_changed(diff)
 signal point_changed(pt)
 signal max_point_changed(max_pt)
+signal player_cell(id)
 
 var invincible:=false
 var dead:=false
@@ -100,6 +101,9 @@ func move(delta:float):
 	elif d:
 		direction=Directions.D
 	else:
+		var l1:TileMap=get_parent().layer1
+		var cell:int=l1.get_cellv(l1.world_to_map(l1.to_local(position)))
+		emit_signal("player_cell",cell)
 		return
 	
 	move_vector=DIRECTIONS_MAPPING[direction]
@@ -112,6 +116,7 @@ func move(delta:float):
 	elif cell==5:
 		move_vector*=0.75
 		damage(null,1)
+	emit_signal("player_cell",cell)
 	position+=speed*move_vector*delta
 	position.x=clamp(position.x,-32*32,32*32)
 	position.y=clamp(position.y,-32*32,32*32)
