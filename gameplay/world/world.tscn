@@ -195,6 +195,7 @@ text = "Quit"
 
 [connection signal="hp_changed" from="Player" to="GUI/Health" method="_on_Player_hp_changed"]
 [connection signal="killed" from="Player" to="GUI/GameOver" method="_on_Player_killed"]
+[connection signal="max_point_changed" from="Player" to="." method="_on_Player_max_point_changed"]
 [connection signal="max_point_changed" from="Player" to="GUI/Points" method="_on_Player_max_point_changed"]
 [connection signal="max_point_changed" from="Player" to="GUI/CenterContainer/Upgrades" method="_on_Player_max_point_changed"]
 [connection signal="point_changed" from="Player" to="GUI/Points" method="_on_Player_point_changed"]

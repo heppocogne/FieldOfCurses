@@ -105,3 +105,7 @@ func _on_SpawnTimer_timeout():
 
 func _on_Monster_killed():
 	kills_count+=1
+
+
+func _on_Player_max_point_changed(_max_pt:int):
+	$SpawnTimer.wait_time=max($SpawnTimer.wait_time-0.5,1)
