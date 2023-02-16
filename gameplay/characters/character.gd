@@ -4,7 +4,6 @@ extends Area2D
 
 const SQRT_2:=sqrt(2)
 
-signal chunk_changed(new_chunk)
 signal killed()
 
 export var speed:float=64
@@ -27,8 +26,6 @@ enum Directions{
 }
 var direction:int=Directions.D
 var _animation_index:int=1
-var _precious_position:Vector2
-var _previous_chunk:Vector2=Vector2.INF
 
 const DIRECTIONS_MAPPING:={
 	Directions.D:Vector2.DOWN,
@@ -47,7 +44,6 @@ func _ready():
 	var timer:Timer=$AnimationTimer
 	timer.wait_time=1/animation_fps
 	timer.start()
-	_precious_position=position
 
 
 func move(_delta:float):
@@ -57,18 +53,6 @@ func move(_delta:float):
 func _physics_process(delta):
 	if !Engine.editor_hint:
 		move(delta)
-	
-		var chunk:=position/(16*32)
-		chunk.x=int(chunk.x)
-		chunk.y=int(chunk.y)
-		if position.x<0:
-			chunk.x-=1
-		if position.y<0:
-			chunk.y-=1
-		
-		if _previous_chunk!=chunk:
-			_previous_chunk=chunk
-			emit_signal("chunk_changed",chunk)
 
 
 func _draw():

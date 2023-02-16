@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/life.png-6f0ad4308b0a9a26ac94b933a56f4004.stex"
+path="res://.import/armor.png-47148a9fdca04fc40e5c4fdb4145baae.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/gui/life.png"
-dest_files=[ "res://.import/life.png-6f0ad4308b0a9a26ac94b933a56f4004.stex" ]
+source_file="res://gameplay/gui/armor.png"
+dest_files=[ "res://.import/armor.png-47148a9fdca04fc40e5c4fdb4145baae.stex" ]
 
 [params]
 

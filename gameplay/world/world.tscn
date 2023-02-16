@@ -1,8 +1,13 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://gameplay/characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/world/world.gd" type="Script" id=2]
 [ext_resource path="res://gameplay/tiles/tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://gameplay/world/異形.mp3" type="AudioStream" id=4]
+[ext_resource path="res://gameplay/gui/health.gd" type="Script" id=5]
+[ext_resource path="res://gameplay/gui/life.tscn" type="PackedScene" id=6]
+[ext_resource path="res://gameplay/world/points.gd" type="Script" id=7]
+[ext_resource path="res://gameplay/gui/upgrades.gd" type="Script" id=8]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
@@ -27,4 +32,83 @@ speed = 128.0
 wait_time = 3.0
 autostart = true
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 4 )
+volume_db = -10.0
+autoplay = true
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="Health" type="HBoxContainer" parent="GUI"]
+margin_left = 16.0
+margin_top = 16.0
+margin_right = 397.0
+margin_bottom = 48.0
+rect_min_size = Vector2( 16, 16 )
+mouse_filter = 2
+script = ExtResource( 5 )
+
+[node name="Life" parent="GUI/Health" instance=ExtResource( 6 )]
+margin_right = 32.0
+margin_bottom = 32.0
+
+[node name="Life2" parent="GUI/Health" instance=ExtResource( 6 )]
+margin_left = 36.0
+margin_right = 68.0
+margin_bottom = 32.0
+
+[node name="Life3" parent="GUI/Health" instance=ExtResource( 6 )]
+margin_left = 72.0
+margin_right = 104.0
+margin_bottom = 32.0
+
+[node name="Points" type="HBoxContainer" parent="GUI"]
+margin_left = 16.0
+margin_top = 560.0
+margin_right = 397.0
+margin_bottom = 574.0
+mouse_filter = 2
+script = ExtResource( 7 )
+
+[node name="Label" type="Label" parent="GUI/Points"]
+margin_right = 44.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Points:"
+
+[node name="ProgressBar" type="ProgressBar" parent="GUI/Points"]
+margin_left = 48.0
+margin_right = 348.0
+margin_bottom = 14.0
+rect_min_size = Vector2( 300, 14 )
+mouse_filter = 2
+max_value = 10.0
+step = 1.0
+percent_visible = false
+
+[node name="Values" type="Label" parent="GUI/Points"]
+margin_left = 352.0
+margin_right = 373.0
+margin_bottom = 14.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "0/5"
+
+[node name="CenterContainer" type="CenterContainer" parent="GUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 1
+
+[node name="Upgrades" type="HBoxContainer" parent="GUI/CenterContainer"]
+pause_mode = 2
+margin_left = 400.0
+margin_top = 300.0
+margin_right = 400.0
+margin_bottom = 300.0
+script = ExtResource( 8 )
+
+[connection signal="hp_changed" from="Player" to="GUI/Health" method="_on_Player_hp_changed"]
+[connection signal="max_point_changed" from="Player" to="GUI/Points" method="_on_Player_max_point_changed"]
+[connection signal="max_point_changed" from="Player" to="GUI/CenterContainer/Upgrades" method="_on_Player_max_point_changed"]
+[connection signal="point_changed" from="Player" to="GUI/Points" method="_on_Player_point_changed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

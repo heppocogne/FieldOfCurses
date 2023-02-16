@@ -58,7 +58,7 @@ func damage(by:Character,amount:int):
 	t.interpolate_property(
 		self,
 		"diag",
-		-0.5,
+		-by.weapon.knockback,
 		1.0,
 		1.0
 	)

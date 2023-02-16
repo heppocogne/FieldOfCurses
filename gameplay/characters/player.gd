@@ -2,6 +2,10 @@ tool
 class_name Player
 extends Character
 
+signal hp_changed(diff)
+signal point_changed(pt)
+signal max_point_changed(max_pt)
+
 var invincible:=false
 var dead:=false
 onready var weapon:Weapon=$LongSword
@@ -9,7 +13,7 @@ onready var points:int=0
 onready var audio:AudioStreamPlayer=$AudioStreamPlayer
 onready var audio2:AudioStreamPlayer=$AudioStreamPlayer2
 
-var next_upgrade:=10
+var next_upgrade:=5
 
 
 func _ready():
@@ -115,6 +119,9 @@ func move(delta:float):
 
 func _on_Character_killed():
 	visible=false
+	var effect:Effect=preload("res://gameplay/effect/hit_effect.tscn").instance()
+	effect.position=position
+	add_child(effect)
 	dead=true
 
 
@@ -127,6 +134,7 @@ func _on_InvincibleTimer_timeout():
 func damage(by:Character,amount:int):
 	if !invincible and !dead:
 		.damage(by,amount)
+		emit_signal("hp_changed",-1)
 		invincible=true
 		$Tween.start()
 		$InvincibleTimer.start()
@@ -137,6 +145,11 @@ func damage(by:Character,amount:int):
 func _on_Character_area_entered(area:Area2D):
 	if area is Item:
 		points+=area.point
+		if next_upgrade<=points:
+			points-=next_upgrade
+			next_upgrade+=5
+			emit_signal("max_point_changed",next_upgrade)
+		emit_signal("point_changed",points)
 		area.queue_free()
 		audio.play()
 		print_debug("points=",points)

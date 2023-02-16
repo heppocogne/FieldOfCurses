@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/life.png-6f0ad4308b0a9a26ac94b933a56f4004.stex"
+path="res://.import/book.png-2370bd734712f25bac562b59fef777cf.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/gui/life.png"
-dest_files=[ "res://.import/life.png-6f0ad4308b0a9a26ac94b933a56f4004.stex" ]
+source_file="res://gameplay/gui/book.png"
+dest_files=[ "res://.import/book.png-2370bd734712f25bac562b59fef777cf.stex" ]
 
 [params]
 

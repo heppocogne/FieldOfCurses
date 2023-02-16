@@ -6,7 +6,7 @@ export var attack_angle_degrees:float=30
 export var cooldown:float=1.0
 export var damage:=5
 export var maximum_targets:=1
-export var knockback:float=1.0
+export var knockback:float=0.5
 
 onready var cooldown_timer:Timer=$CoolDownTimer
 var _attack_angle:float
@@ -36,7 +36,7 @@ func _attack_impl():
 			angle_diff+=TAU
 		if abs(angle_diff)<=_attack_angle:
 			enemy.damage(GlobalScript.player,damage)
-			var effect:SlashEffect=preload("res://gameplay/effect/slash_effect.tscn").instance()
+			var effect:Effect=preload("res://gameplay/effect/slash_effect.tscn").instance()
 			effect.rotation=enemy.position.angle_to_point(GlobalScript.player.position)+deg2rad(-135)
 			effect.position=enemy.position
 			GlobalScript.world.add_child(effect)

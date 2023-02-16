@@ -1,9 +1,11 @@
-class_name ShadowEffect
+class_name Effect
 extends Sprite
+
+export var max_frame:=1
 
 
 func _process(_delta):
-	if frame==30:
+	if frame==max_frame:
 		queue_free()
 	else:
 		frame+=1

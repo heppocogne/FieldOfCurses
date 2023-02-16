@@ -1,18 +1,18 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://gameplay/effect/[Magic]Shadow01_panop.png" type="Texture" id=1]
+[ext_resource path="res://gameplay/effect/[Attack]Hit01_panop.png" type="Texture" id=1]
 [ext_resource path="res://gameplay/effect/effect.gd" type="Script" id=2]
 
 [sub_resource type="CanvasItemMaterial" id=1]
 blend_mode = 2
 
-[node name="ShadowEffect" type="Sprite"]
+[node name="HitEffect" type="Sprite"]
 material = SubResource( 1 )
 texture = ExtResource( 1 )
 hframes = 8
 vframes = 4
 script = ExtResource( 2 )
-max_frame = 30
+max_frame = 31
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05

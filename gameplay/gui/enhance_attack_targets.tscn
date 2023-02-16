@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gameplay/gui/upgrade.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gameplay/weapon/long_sword.png" type="Texture" id=2]
+
+[node name="Upgrade" instance=ExtResource( 1 )]
+upgrade_id = "attack_targets"
+
+[node name="Icon" parent="VBoxContainer/CenterContainer" index="0"]
+texture = ExtResource( 2 )
+
+[node name="Label" parent="VBoxContainer" index="1"]
+margin_bottom = 113.0
+text = "Attack Targets:
+Increases the number of enemies to attack"

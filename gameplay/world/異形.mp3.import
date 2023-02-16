@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/異形.mp3-5099b5620f0bfbcdb9f02720b67ff992.mp3str"
+
+[deps]
+
+source_file="res://gameplay/world/異形.mp3"
+dest_files=[ "res://.import/異形.mp3-5099b5620f0bfbcdb9f02720b67ff992.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

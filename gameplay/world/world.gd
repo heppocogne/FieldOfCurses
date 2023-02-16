@@ -94,6 +94,6 @@ func _on_SpawnTimer_timeout():
 			slime=preload("res://gameplay/characters/slime.tscn").instance()
 		slime.position=layer1.to_global(pos)
 		add_child(slime)
-		var effect:ShadowEffect=preload("res://gameplay/effect/shadow_effect.tscn").instance()
+		var effect:Effect=preload("res://gameplay/effect/shadow_effect.tscn").instance()
 		effect.position=slime.position
 		add_child(effect)

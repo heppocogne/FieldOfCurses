@@ -21,7 +21,6 @@ shape = SubResource( 1 )
 
 [node name="Sprite" parent="." index="1"]
 texture = ExtResource( 2 )
-frame = 0
 
 [node name="Tween" type="Tween" parent="." index="3"]
 repeat = true
