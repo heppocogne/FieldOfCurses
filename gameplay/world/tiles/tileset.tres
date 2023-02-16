@@ -1,7 +1,7 @@
 [gd_resource type="TileSet" load_steps=9 format=2]
 
-[ext_resource path="res://gameplay/tiles/base_tiles.png" type="Texture" id=1]
-[ext_resource path="res://gameplay/tiles/cursed.png" type="Texture" id=2]
+[ext_resource path="res://gameplay/world/tiles/base_tiles.png" type="Texture" id=1]
+[ext_resource path="res://gameplay/world/tiles/cursed.png" type="Texture" id=2]
 
 [sub_resource type="NavigationPolygon" id=1]
 vertices = PoolVector2Array( 16, 16, 0, 16, 0, 0, 16, 0 )

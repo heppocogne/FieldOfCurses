@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/cursed.png-67098eab4c8c085907b75e64653238e5.stex"
+path="res://.import/cursed.png-4d97cdf2808a90c6742d38069996ea14.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/tiles/cursed.png"
-dest_files=[ "res://.import/cursed.png-67098eab4c8c085907b75e64653238e5.stex" ]
+source_file="res://gameplay/world/tiles/cursed.png"
+dest_files=[ "res://.import/cursed.png-4d97cdf2808a90c6742d38069996ea14.stex" ]
 
 [params]
 

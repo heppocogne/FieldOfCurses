@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/base_tiles.png-bd844cae7619e5f3540b892506c1e5a6.stex"
+path="res://.import/base_tiles.png-1f0823c9aeb590441ddc4f6c946f2650.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://gameplay/tiles/base_tiles.png"
-dest_files=[ "res://.import/base_tiles.png-bd844cae7619e5f3540b892506c1e5a6.stex" ]
+source_file="res://gameplay/world/tiles/base_tiles.png"
+dest_files=[ "res://.import/base_tiles.png-1f0823c9aeb590441ddc4f6c946f2650.stex" ]
 
 [params]
 

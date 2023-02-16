@@ -2,7 +2,7 @@
 
 [ext_resource path="res://gameplay/characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/world/world.gd" type="Script" id=2]
-[ext_resource path="res://gameplay/tiles/tileset.tres" type="TileSet" id=3]
+[ext_resource path="res://gameplay/world/tiles/tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://gameplay/world/異形.mp3" type="AudioStream" id=4]
 [ext_resource path="res://gui/health.gd" type="Script" id=5]
 [ext_resource path="res://gui/life.tscn" type="PackedScene" id=6]
