@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://gameplay/characters/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/world/world.gd" type="Script" id=2]
@@ -8,6 +8,14 @@
 [ext_resource path="res://gameplay/gui/life.tscn" type="PackedScene" id=6]
 [ext_resource path="res://gameplay/world/points.gd" type="Script" id=7]
 [ext_resource path="res://gameplay/gui/upgrades.gd" type="Script" id=8]
+[ext_resource path="res://gameplay/gui/PixelMplus12-Regular.ttf" type="DynamicFontData" id=9]
+[ext_resource path="res://gameplay/gui/PixelMplus10-Regular.12.tres" type="DynamicFont" id=10]
+[ext_resource path="res://gameplay/gui/PixelMplus10-Regular.32.tres" type="DynamicFont" id=11]
+[ext_resource path="res://gameplay/gui/game_over.gd" type="Script" id=12]
+
+[sub_resource type="DynamicFont" id=1]
+size = 64
+font_data = ExtResource( 9 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
@@ -72,26 +80,28 @@ mouse_filter = 2
 script = ExtResource( 7 )
 
 [node name="Label" type="Label" parent="GUI/Points"]
-margin_right = 44.0
+margin_right = 42.0
 margin_bottom = 14.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
 text = "Points:"
 
 [node name="ProgressBar" type="ProgressBar" parent="GUI/Points"]
-margin_left = 48.0
-margin_right = 348.0
+margin_left = 46.0
+margin_right = 346.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 300, 14 )
 mouse_filter = 2
-max_value = 10.0
+max_value = 5.0
 step = 1.0
 percent_visible = false
 
 [node name="Values" type="Label" parent="GUI/Points"]
-margin_left = 352.0
-margin_right = 373.0
+margin_left = 350.0
+margin_right = 368.0
 margin_bottom = 14.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = ExtResource( 10 )
 text = "0/5"
 
 [node name="CenterContainer" type="CenterContainer" parent="GUI"]
@@ -107,8 +117,87 @@ margin_right = 400.0
 margin_bottom = 300.0
 script = ExtResource( 8 )
 
+[node name="GameOver" type="VBoxContainer" parent="GUI"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 64
+alignment = 1
+script = ExtResource( 12 )
+
+[node name="Label" type="Label" parent="GUI/GameOver"]
+margin_top = 142.0
+margin_right = 800.0
+margin_bottom = 212.0
+custom_fonts/font = SubResource( 1 )
+text = "Game Over"
+align = 1
+
+[node name="GridContainer" type="GridContainer" parent="GUI/GameOver"]
+margin_left = 288.0
+margin_top = 276.0
+margin_right = 512.0
+margin_bottom = 352.0
+size_flags_horizontal = 4
+custom_constants/hseparation = 32
+columns = 2
+
+[node name="PlayTime" type="Label" parent="GUI/GameOver/GridContainer"]
+margin_right = 144.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 11 )
+text = "Play time"
+
+[node name="PlayTimeValue" type="Label" parent="GUI/GameOver/GridContainer"]
+margin_left = 176.0
+margin_right = 224.0
+margin_bottom = 36.0
+custom_fonts/font = ExtResource( 11 )
+text = "0:0"
+align = 2
+
+[node name="Kills" type="Label" parent="GUI/GameOver/GridContainer"]
+margin_top = 40.0
+margin_right = 144.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 11 )
+text = "Kills"
+
+[node name="KillsValue" type="Label" parent="GUI/GameOver/GridContainer"]
+margin_left = 176.0
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 76.0
+custom_fonts/font = ExtResource( 11 )
+text = "0"
+align = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="GUI/GameOver"]
+margin_top = 416.0
+margin_right = 800.0
+margin_bottom = 458.0
+custom_constants/separation = 64
+alignment = 1
+
+[node name="Retry" type="Button" parent="GUI/GameOver/HBoxContainer"]
+margin_left = 284.0
+margin_right = 376.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 11 )
+text = "Retry"
+
+[node name="Quit" type="Button" parent="GUI/GameOver/HBoxContainer"]
+margin_left = 440.0
+margin_right = 516.0
+margin_bottom = 42.0
+custom_fonts/font = ExtResource( 11 )
+text = "Quit"
+
 [connection signal="hp_changed" from="Player" to="GUI/Health" method="_on_Player_hp_changed"]
+[connection signal="killed" from="Player" to="GUI/GameOver" method="_on_Player_killed"]
 [connection signal="max_point_changed" from="Player" to="GUI/Points" method="_on_Player_max_point_changed"]
 [connection signal="max_point_changed" from="Player" to="GUI/CenterContainer/Upgrades" method="_on_Player_max_point_changed"]
 [connection signal="point_changed" from="Player" to="GUI/Points" method="_on_Player_point_changed"]
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]
+[connection signal="pressed" from="GUI/GameOver/HBoxContainer/Retry" to="GUI/GameOver" method="_on_Retry_pressed"]
+[connection signal="pressed" from="GUI/GameOver/HBoxContainer/Quit" to="GUI/GameOver" method="_on_Quit_pressed"]

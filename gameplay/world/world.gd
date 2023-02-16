@@ -3,6 +3,8 @@ extends Node2D
 var noise:OpenSimplexNoise
 var generated_chunks:Array
 var curse_values:Dictionary
+var time_passed:float=0
+var kills_count:int=0
 onready var layer1:TileMap=$Layer1
 onready var camera:Camera2D=$Camera2D
 onready var player:Character=$Player
@@ -29,8 +31,9 @@ func _ready():
 			_update_cell(Vector2(x,y))
 
 
-func _process(_delta):
+func _process(delta):
 	camera.position=player.position
+	time_passed+=delta
 
 
 func _get_noise(cell_pos:Vector2)->float:
@@ -92,8 +95,13 @@ func _on_SpawnTimer_timeout():
 			slime=preload("res://gameplay/characters/red_slime.tscn").instance()
 		else:
 			slime=preload("res://gameplay/characters/slime.tscn").instance()
+		slime.connect("killed",self,"_on_Monster_killed")
 		slime.position=layer1.to_global(pos)
 		add_child(slime)
 		var effect:Effect=preload("res://gameplay/effect/shadow_effect.tscn").instance()
 		effect.position=slime.position
 		add_child(effect)
+
+
+func _on_Monster_killed():
+	kills_count+=1
