@@ -37,7 +37,7 @@ _global_script_classes=[ {
 "base": "PanelContainer",
 "class": "Upgrade",
 "language": "GDScript",
-"path": "res://gameplay/gui/upgrade.gd"
+"path": "res://gui/upgrade.gd"
 }, {
 "base": "Node2D",
 "class": "Weapon",

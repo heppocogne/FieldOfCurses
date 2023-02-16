@@ -3,13 +3,13 @@ extends HBoxContainer
 const THRESHHOLD:=0.01
 
 const upgrade_scenes:=[
-	preload("res://gameplay/gui/enhance_attack_damage.tscn"),
-	preload("res://gameplay/gui/enhance_attack_knockback.tscn"),
-	preload("res://gameplay/gui/enhance_attack_speed.tscn"),
-	preload("res://gameplay/gui/enhance_attack_targets.tscn"),
-	preload("res://gameplay/gui/regeneration.tscn"),
-	preload("res://gameplay/gui/transient_protection.tscn"),
-	preload("res://gameplay/gui/purify.tscn"),
+	preload("res://gui/enhance_attack_damage.tscn"),
+	preload("res://gui/enhance_attack_knockback.tscn"),
+	preload("res://gui/enhance_attack_speed.tscn"),
+	preload("res://gui/enhance_attack_targets.tscn"),
+	preload("res://gui/regeneration.tscn"),
+	preload("res://gui/transient_protection.tscn"),
+	preload("res://gui/purify.tscn"),
 ]
 
 

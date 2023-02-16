@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://gameplay/gui/upgrade.gd" type="Script" id=1]
-[ext_resource path="res://gameplay/gui/PixelMplus12-Regular.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://gui/upgrade.gd" type="Script" id=1]
+[ext_resource path="res://gui/PixelMplus12-Regular.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="DynamicFont" id=1]
 font_data = ExtResource( 2 )

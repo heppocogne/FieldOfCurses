@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://gameplay/gui/life.png" type="Texture" id=1]
+[ext_resource path="res://gui/life.png" type="Texture" id=1]
 
 [node name="Life" type="TextureRect"]
 margin_right = 24.0
