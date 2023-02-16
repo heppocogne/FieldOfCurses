@@ -5,6 +5,11 @@ extends Character
 var invincible:=false
 var dead:=false
 onready var weapon:Weapon=$LongSword
+onready var points:int=0
+onready var audio:AudioStreamPlayer=$AudioStreamPlayer
+onready var audio2:AudioStreamPlayer=$AudioStreamPlayer2
+
+var next_upgrade:=10
 
 
 func _ready():
@@ -120,9 +125,18 @@ func _on_InvincibleTimer_timeout():
 
 
 func damage(by:Character,amount:int):
-	if !invincible:
+	if !invincible and !dead:
 		.damage(by,amount)
 		invincible=true
 		$Tween.start()
 		$InvincibleTimer.start()
+		audio2.play()
 		print_debug("hp:",hp)
+
+
+func _on_Character_area_entered(area:Area2D):
+	if area is Item:
+		points+=area.point
+		area.queue_free()
+		audio.play()
+		print_debug("points=",points)

@@ -24,6 +24,7 @@ limit_bottom = 1024
 speed = 128.0
 
 [node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
 autostart = true
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_SpawnTimer_timeout"]

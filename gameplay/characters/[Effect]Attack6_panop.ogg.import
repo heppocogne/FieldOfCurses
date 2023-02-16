@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/[Effect]Attack6_panop.ogg-ae3bb65a0e50b7a3f6828af271d96919.oggstr"
+
+[deps]
+
+source_file="res://gameplay/characters/[Effect]Attack6_panop.ogg"
+dest_files=[ "res://.import/[Effect]Attack6_panop.ogg-ae3bb65a0e50b7a3f6828af271d96919.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

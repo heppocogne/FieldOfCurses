@@ -5,6 +5,7 @@ extends Character
 const SPREAD_THRESHHOLD=0.01
 
 export var curse:float=1
+export var drop_item:PackedScene
 
 var player_entered:=false
 var diag:=1.0
@@ -76,6 +77,9 @@ func _on_Character_killed():
 				curse_spread[center+Vector2(x,y)]=curse_value
 #	print_debug(get_parent().layer1.world_to_map(position))
 	get_parent().add_curses(curse_spread)
+	var item:Item=drop_item.instance()
+	item.position=position
+	get_parent().add_child(item)
 	queue_free()
 
 

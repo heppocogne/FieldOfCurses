@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/[Effect]ZAAUN_panop.ogg-bcf1b1cbe79901cd9d6b30965fc3b68a.oggstr"
+
+[deps]
+
+source_file="res://gameplay/characters/[Effect]ZAAUN_panop.ogg"
+dest_files=[ "res://.import/[Effect]ZAAUN_panop.ogg-bcf1b1cbe79901cd9d6b30965fc3b68a.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

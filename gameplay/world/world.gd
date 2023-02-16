@@ -71,6 +71,9 @@ func _get_curse(cell_pos:Vector2)->float:
 
 
 func _on_SpawnTimer_timeout():
+	if player.dead:
+		return
+	
 	var spawnable_cells:=[]
 	var player_cell:=GlobalScript.player.position/16
 	for y in range(-32,32):
@@ -91,3 +94,6 @@ func _on_SpawnTimer_timeout():
 			slime=preload("res://gameplay/characters/slime.tscn").instance()
 		slime.position=layer1.to_global(pos)
 		add_child(slime)
+		var effect:ShadowEffect=preload("res://gameplay/effect/shadow_effect.tscn").instance()
+		effect.position=slime.position
+		add_child(effect)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://gameplay/item/item.tscn" type="PackedScene" id=1]
+[ext_resource path="res://gameplay/item/icon051.png" type="Texture" id=2]
+
+[node name="Item" instance=ExtResource( 1 )]
+point = 3
+
+[node name="Sprite" parent="." index="1"]
+texture = ExtResource( 2 )

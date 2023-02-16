@@ -40,6 +40,10 @@ func _attack_impl():
 			effect.rotation=enemy.position.angle_to_point(GlobalScript.player.position)+deg2rad(-135)
 			effect.position=enemy.position
 			GlobalScript.world.add_child(effect)
+			
+			count+=1
+			if count==maximum_targets:
+				return
 
 
 func _attack_effect():

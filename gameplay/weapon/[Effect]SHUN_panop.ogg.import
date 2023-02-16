@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/[Effect]SHUN_panop.ogg-122c3b461ec5a0a28954753c650bd42b.oggstr"
+
+[deps]
+
+source_file="res://gameplay/weapon/[Effect]SHUN_panop.ogg"
+dest_files=[ "res://.import/[Effect]SHUN_panop.ogg-122c3b461ec5a0a28954753c650bd42b.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

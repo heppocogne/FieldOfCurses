@@ -1,14 +1,15 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://gameplay/weapon/weapon.tscn" type="PackedScene" id=1]
 [ext_resource path="res://gameplay/weapon/long_sword.png" type="Texture" id=2]
+[ext_resource path="res://gameplay/weapon/[Effect]SHUN_panop.ogg" type="AudioStream" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 72.0069
 
 [node name="LongSword" instance=ExtResource( 1 )]
 attack_angle_degrees = 60.0
-cooldown = 0.2
+cooldown = 0.5
 maximum_targets = 3
 
 [node name="CollisionShape2D" parent="AttackArea" index="0"]
@@ -19,3 +20,6 @@ position = Vector2( 50, 0 )
 rotation = 2.35619
 scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
+
+[node name="AudioStreamPlayer" parent="." index="4"]
+stream = ExtResource( 3 )
