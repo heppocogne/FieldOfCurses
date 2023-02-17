@@ -57,6 +57,7 @@ _global_script_class_icons={
 [application]
 
 config/name="Field Of Curses"
+run/main_scene="res://gameplay/title/title.tscn"
 boot_splash/image="res://splash.png"
 boot_splash/bg_color=Color( 0.141176, 0.141176, 0.141176, 1 )
 config/icon="res://gameplay/item/icon051.png"
